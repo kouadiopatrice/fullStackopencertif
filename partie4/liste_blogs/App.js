@@ -1,10 +1,10 @@
-const config = require('./utile/config')
+const config = require('./utils/config')
 const express = require('express')
 const app = express()
 const cors = require('cors')
 const blogRouter = require('./controller/blogs')
-const middleware = require('./utile/middleware')
-const logger = require('./utile/logger')
+const middleware = require('./utils/middleware')
+const logger = require('./utils/logger')
 const mongoose = require('mongoose')
 
 logger.info('connecting to', config.MONGODB_URI)

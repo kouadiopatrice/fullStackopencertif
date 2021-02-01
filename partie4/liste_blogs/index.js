@@ -1,8 +1,8 @@
-
+require('dotenv').config()
 const app = require('./App') // the actual Express application
 const http = require('http')
-const config = require('./Utile/config')
-const logger = require('./Utile/logger')
+const config = require('./utils/config')
+const logger = require('./utils/logger')
 
 const server = http.createServer(app)
 
