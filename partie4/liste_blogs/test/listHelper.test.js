@@ -1,3 +1,9 @@
+const mongoose = require('mongoose')
+const supertest = require('supertest')
+const app = require('../app')
+const api = supertest(app)
+
+
 const listHelper = require('../utils/list_helper')
 
 test('dummy returns one ', () => {
@@ -43,4 +49,14 @@ test('of list blogs',() => {
   expect(resultlike).toEqual(resultlike)
  }) 
  
+})
+
+test('blogs are returned as json ',async() => {
+  await api
+  .get('/api/blogs')
+  .expect(200)
+  .expect('content-type' , /appliction\/json/)
+} )
+afterAll(() => {
+  mongoose.connection.close()
 })
