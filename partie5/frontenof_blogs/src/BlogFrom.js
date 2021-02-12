@@ -47,13 +47,13 @@ const BlogForm =  ({ createBlog }) => {
   const displayblog =() => 
   (
       <DisplayTogglable buttonLabel='show blog'>
-           {blogs.map(blog =>
-          <Blog key={blog.id} blog={blog} /> 
+           {blogs.map((blog,i) =>
+          <Blog key={i} blog={blog} /> 
         )}
       </DisplayTogglable>
   )
   return (
-    <div>
+    <div className="formDiv">
       <h2>Create a new blog</h2>
 
       <form onSubmit={addBlog}>

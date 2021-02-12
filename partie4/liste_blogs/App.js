@@ -1,9 +1,14 @@
 const config = require('./utils/config')
 const express = require('express')
+const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
+require('express-async-errors')
 const app = express()
 const cors = require('cors')
 const blogRouter = require('./controller/blogs')
-const middleware = require('./utils/middleware')
+const usersRouter = require('./controller/users')
+const loginRouter = require('./controller/login')
+const middleware = require('./utils/middlewere')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
 
@@ -21,9 +26,11 @@ app.use(cors())
 app.use(express.static('build'))
 app.use(express.json())
 app.use(middleware.requestLogger)
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/blogs', blogRouter)
-
+app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 

@@ -5,9 +5,8 @@ return(
   
   <div>
     <ul className='listeblog'>
-    {blog.title} <br/>
-   {blog.author} <br/>
-    {blog.url}<br/>
+     <li className ='blog'> {blog.title}</li> 
+    <li className='blog'> {blog.author} </li>     {blog.url}<br/>
    { blog.likes}<br/>
     </ul>
     

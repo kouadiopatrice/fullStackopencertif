@@ -25,7 +25,6 @@ const blogsSchema = new mongoose.Schema({
     author: {
      type: String,
     minlength:3,
-    require:true
     },
     url:{
       type: String,
@@ -35,14 +34,15 @@ const blogsSchema = new mongoose.Schema({
     likes:{ 
       type:Number,
     minlength:1,
-    require:true
     }
 })
+/*
 blogsSchema.plugin(uniqueValidator);
 blogsSchema.set('validateBeforeSave', false)
 blogsSchema.path('title').validate(value => {
   return value != null;
 });
+*/
 const Blog = mongoose.model('blogs', blogsSchema)
 
 const blog = new Blog({
@@ -51,13 +51,13 @@ const blog = new Blog({
     url:process.argv[5],
     likes: process.argv[6]
 })
-
+/*
 blog.save().then(response => {
 
   console.log('message saved!');
 
-  mongoose.connection.close();
-})
+  //mongoose.connection.close();
+})*/
 
 Blog.find({}).then(result => {
     result.forEach(blog => {
